@@ -1,0 +1,11 @@
+# Ignorar a pasta .terraform
+.terraform/
+
+# Ignorar pasta modules (se não for versionada)
+script/
+
+# Ignorar arquivos temporários
+*.tfstate
+*.tfstate.backup
+*.log
+
