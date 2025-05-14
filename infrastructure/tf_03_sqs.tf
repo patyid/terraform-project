@@ -1,6 +1,7 @@
 module "sqs_transaction" {
   source = "../aws/modules/sqs"
-  name = "sqs_transaction"
+  for_each = var.sqs_queues
+  name = each.value.name
 
   tags = {
     PROJECT_NAME  = var.project_name

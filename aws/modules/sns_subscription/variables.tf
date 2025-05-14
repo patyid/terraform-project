@@ -18,3 +18,9 @@ variable "raw_message_delivery" {
   type        = bool
   default     = false
 }
+
+variable "filter_policy" {
+  description = "SNS filter policy to apply to the subscription"
+  type        = string
+  default     = null
+}

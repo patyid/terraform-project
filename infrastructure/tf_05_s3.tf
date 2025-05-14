@@ -27,3 +27,12 @@ module "refined_bucket" {
     CENTRO_CUSTO  = var.centro_custo
   }
 }
+
+module "raw_prefix" {
+  source      = "../aws/modules/s3/prefix"
+  bucket_name = module.raw_bucket.bucket_name
+  prefix    = [
+    "recebimento",
+    "processar"
+  ]
+}

@@ -13,3 +13,25 @@ variable "project_name" {
 variable "centro_custo" {
   default ="001"
 }
+
+variable "sqs_queues" {
+  type = map(object({
+    name          = string
+    filter_policy = map(any)
+  }))
+  default = {
+    recebimento = {
+      name          = "fila-recebimento"
+      filter_policy = {
+        prefix = ["recebimento"]
+      }
+    },
+    processar = {
+      name          = "fila-processar"
+      filter_policy = {
+        prefix = ["processar"]
+      }
+    }
+  }
+}
+
