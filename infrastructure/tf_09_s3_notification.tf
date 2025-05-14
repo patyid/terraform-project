@@ -7,7 +7,9 @@ module "s3_notification" {
   events      = ["s3:ObjectCreated:*"]
 
   depends_on = [
-    module.s3_bucket_policy,
-    module.sns_to_sqs
+    module.sns_topic_policy,
+    module.sns_to_sqs,
+    module.sns_topic_transaction,
+    module.raw_bucket
   ]
 }

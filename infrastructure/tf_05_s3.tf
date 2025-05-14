@@ -1,6 +1,6 @@
 module "raw_bucket" {
   source = "../aws/modules/s3"
-  bucket_name = "raw_"+var.id_count
+  bucket_name = "raw-${var.id_count}"
 
   tags = {
     PROJECT_NAME  = var.project_name
@@ -10,7 +10,7 @@ module "raw_bucket" {
 
 module "trusted_bucket" {
   source = "../aws/modules/s3"
-  bucket_name = "trusted_"+var.id_count
+  bucket_name = "trusted-${var.id_count}"
 
   tags = {
     PROJECT_NAME  = var.project_name
@@ -20,7 +20,7 @@ module "trusted_bucket" {
 
 module "refined_bucket" {
   source = "../aws/modules/s3"
-  bucket_name = "trusted_"+var.id_count
+  bucket_name = "refined-${var.id_count}"
 
   tags = {
     PROJECT_NAME  = var.project_name

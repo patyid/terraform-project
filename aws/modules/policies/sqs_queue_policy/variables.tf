@@ -1,14 +1,14 @@
 variable "queue_url" {
+  description = "URL of the SQS queue"
   type        = string
-  description = "The URL of the SQS queue"
 }
 
 variable "queue_arn" {
+  description = "ARN of the SQS queue"
   type        = string
-  description = "The ARN of the SQS queue"
 }
 
 variable "topic_arn" {
+  description = "ARN of the SNS topic"
   type        = string
-  description = "The ARN of the SNS topic"
 }
