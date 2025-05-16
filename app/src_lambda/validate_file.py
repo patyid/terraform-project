@@ -12,7 +12,6 @@ def lambda_handler(event, context):
             print(f"Verificando arquivo: s3://{bucket}/{key}")
             # Baixa o arquivo CSV do S3 (somente o cabeçalho)
             response = s3.get_object(Bucket=bucket, Key=key)
-            content = response['Body'].read().decode('utf-8')
             if do_validate(response,bucket,key):
                 do_mv_file(bucket,key)
             else:
@@ -26,11 +25,6 @@ def do_validate(response,bucket,key):
     content = response['Body'].read().decode('utf-8')
     # Lê apenas a primeira linha (cabeçalho)
     line = content.splitlines()
-    if not line:
-        print(f"Arquivo {key} está vazio.")
-        print(f"cabeçalho {line}")
-        return False
-
     header_line = line[0]
     header_columns = [col.strip() for col in header_line.split(',')]
 
