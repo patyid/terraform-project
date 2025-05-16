@@ -24,3 +24,10 @@ variable "filter_policy" {
   type        = string
   default     = null
 }
+
+variable "filter_policy_scope" {
+  description = "Filter policy"
+  type        = string
+  default     = "MessageBody"
+}
+

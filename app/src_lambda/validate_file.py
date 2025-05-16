@@ -1,5 +1,4 @@
 import boto3
-import pandas as pd
 import json
 
 s3 = boto3.client('s3')
@@ -23,12 +22,13 @@ def lambda_handler(event, context):
             raise
 
 def do_validate(response,bucket,key):
-    expected_columns = {'Id_client', 'currency', 'amount','date_transaction'}
+    expected_columns = {'id_client', 'currency', 'amount','date_transaction'}
     content = response['Body'].read().decode('utf-8')
     # Lê apenas a primeira linha (cabeçalho)
     line = content.splitlines()
     if not line:
         print(f"Arquivo {key} está vazio.")
+        print(f"cabeçalho {line}")
         return False
 
     header_line = line[0]
@@ -36,6 +36,7 @@ def do_validate(response,bucket,key):
 
     # Verifica se todos os campos clear
     # esperados estão presentes
+    print(f"header_columns {header_columns}")
     if expected_columns.issubset(set(header_columns)):
       return True
     else:

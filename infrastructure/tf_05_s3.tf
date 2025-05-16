@@ -32,7 +32,7 @@ module "raw_prefix" {
   source      = "../aws/modules/s3/prefix"
   bucket_name = module.raw_bucket.bucket_name
   prefix    = [
-    "recebimento",
-    "processar"
+    "recebimento/",
+    "processar/"
   ]
 }

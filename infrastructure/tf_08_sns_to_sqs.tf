@@ -8,5 +8,6 @@ module "sns_to_sqs" {
   raw_message_delivery = true
   filter_policy        = jsonencode(each.value.filter_policy)
 
+
   depends_on = [module.sns_topic_transaction, module.sqs_transaction]
 }
