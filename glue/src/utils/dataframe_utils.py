@@ -23,9 +23,8 @@ def save_dataset_parquet(df, path):
         bytes_per_row = get_bytes(sample_row)
         row_count = df.count()
         num_partitions = get_partition_size(bytes_per_row, row_count)
-        df.write \
+        df.repartition(num_partitions).write \
             .mode("overwrite") \
-            .repartition(num_partitions) \
             .partitionBy("month_transaction") \
             .parquet(path)
     except Exception as e:
