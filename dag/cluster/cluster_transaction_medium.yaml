@@ -1,0 +1,25 @@
+emr:
+  config:
+    name: PROJECT_V1
+    version: emr-6.12.0
+
+    primaryNode:
+      instanceType: m5.xlarge
+      instanceCount: 1
+
+    slaveNodes:
+      instanceType: m5.xlarge
+      instanceCount: 2
+
+    apps:
+      - Hadoop
+      - Spark
+      - Hive
+
+    tags:
+      - Key: PROJECT_NAME
+        Value: PROJECT_V1
+      - Key: CENTRO_CUSTO
+        Value: 001
+
+    glue_data_catalog_config: true

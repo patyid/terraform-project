@@ -1,0 +1,16 @@
+- Name: Executar PySpark - Transaction Summary
+  ActionOnFailure: TERMINATE_CLUSTER
+  HadoopJarStep:
+    Jar: command-runner.jar
+    Args:
+      - spark-submit
+      - --deploy-mode
+      - cluster
+      - --conf
+      - spark.executor.memory=4g
+      - --conf
+      - spark.driver.memory=2g
+      - s3://seu-bucket/scripts/transaction_summary.py
+      - "{{ params.param_0 }}"
+      - "{{ params.param_1 }}"
+
